@@ -50,7 +50,11 @@ function saveTasks() {
 }
 
 function loadTasks() {
-  const tasks = JSON.parse(localStorage.getItem("tasks") || []);
+  const tasks = JSON.parse(localStorage.getItem("tasks"));
+
+  if (!tasks) {
+    return;
+  }
 
   tasks.forEach(createTaskElement);
 }
